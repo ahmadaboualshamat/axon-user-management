@@ -14,7 +14,7 @@ spring:
     #    default-schema: public
     database-change-log-table: DB_CHANGE_LOG
     database-change-log-lock-table: DB_CHANGE_LOG_LOCK
-    drop-first: true
+    drop-first: false
   jpa:
     show-sql: true
     properties:

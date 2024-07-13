@@ -33,7 +33,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.axon</groupId>
-			<artifactId>common-lib</artifactId>
+			<artifactId>common-configuration-lib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
