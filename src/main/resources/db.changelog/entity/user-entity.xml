@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <property name="now" value="NOW()" dbms="postgresql"/>
+
+    <changeSet  id="user-entity-seq" author="Ahmad Abo AlShamat">
+        <createSequence
+                         sequenceName="user_seq"
+                         startValue="1"/>
+    </changeSet>
+
+    <changeSet id="user-entity-1" author="Ahmad Abo AlShamat">
+        <createTable tableName="sys_user"   >
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar2(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar2(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar2(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="user-entity-2" author="Ahmad Abo AlShamat">
+        <addColumn tableName="sys_user"  >
+
+            <column name="created_by" type="varchar2(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime" defaultValue="${now}">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="modified_by" type="varchar2(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

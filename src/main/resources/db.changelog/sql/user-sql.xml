@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <property name="now" value="NOW()" dbms="postgresql"/>
+
+    <changeSet  id="user-type-data-1" author="Ahmad Abo AlShamat" runOnChange="true">
+        <sqlFile path="../../scripts/user-sql-1.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>

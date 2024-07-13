@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <property name="now" value="NOW()" dbms="postgresql"/>
+
+    <changeSet  id="user-action-entity-seq" author="Ahmad Abo AlShamat">
+        <createSequence
+                sequenceName="actusr_seq"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="user-action-entity-1" author="Ahmad Abo AlShamat">
+        <createTable tableName="act_sys_user"  >
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar2(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_info" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="technical_remarks" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="user-action-entity-2" author="Ahmad Abo AlShamat">
+        <addColumn tableName="act_sys_user"  >
+
+            <column name="created_by" type="varchar2(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime" defaultValue="${now}">
+                <constraints nullable="false"/>
+            </column>
+
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,50 @@
+spring:
+  #  profiles:
+  #    active: dev
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  application:
+    name: user-management
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/master.xml
+    #    default-schema: public
+    database-change-log-table: DB_CHANGE_LOG
+    database-change-log-lock-table: DB_CHANGE_LOG_LOCK
+    drop-first: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.default_schema: public
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+        format_sql: true
+    generate-ddl: true
+
+web:
+  cors:
+    allowed-origins: "http://localhost:3000"
+    allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+    max-age: 3600
+    allowed-headers: "Requestor-Type"
+    exposed-headers: "X-Get-Header"
+
+logging:
+  level:
+    root: info
+    com:
+      web: info
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+server:
+  port: 8083
