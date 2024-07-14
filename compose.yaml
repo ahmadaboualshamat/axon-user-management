@@ -13,6 +13,21 @@ services:
       POSTGRES_DB: user_management
     volumes:
       - E:\docker_volumes\postgres:/var/lib/postgresql-user-management/data
+#    networks:
+#      - user-management-network
+  keyClock:
+    container_name: key-cloak-container
+    image: quay.io/keycloak/keycloak:24.0.2
+#    networks:
+#      - user-management
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "9090:8080"
+    command:
+      - "start-dev"
+
 #  user-management-app:
 #    image: ahmadaboualshamat/user-management
 #    container_name: user-management-container

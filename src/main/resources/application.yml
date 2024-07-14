@@ -1,7 +1,23 @@
 spring:
-  #  profiles:
-  #    active: dev
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/SensorApplication"
+      client:
+        registration:
+          #          github:
+          #            client-id: Ov23liZTq96NkAxcnuEl
+          #            client-secret: ab35cdafc2fca06cee2b8748beb5e937ba09d72c
+          keycloak:
+            client-id: sensor-application-rest-APIs
+            client-secret: <YOUR_CLIENT_SECRET>
+            scope: openid, profile, email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            issuer-uri: "http://localhost:9090/realms/SensorApplication"
   data:
     redis:
       host: localhost
