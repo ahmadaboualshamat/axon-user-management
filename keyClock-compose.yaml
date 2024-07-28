@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: 1234567
       POSTGRES_DB: user_management
     volumes:
-      - E:\docker_volumes\postgres:/var/lib/postgresql-user-management/data
+      - /Users/ahmed.aboshamat/Documents/docker_volumes/postgres_users_db:/var/lib/postgresql-user-management/data
 #    networks:
 #      - user-management-network
   keyClock:
